@@ -1,32 +1,17 @@
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-{% for i in messages%}
-<p>{{ i }}</p>
-{% endfor %}
-{% endif %}
-{% endwith %}
-<!-- +---navigation------+</br>
-| login: /login     |</br>
-| post: /post       |</br>
-| account: /account |</br>
---------------------+</br> -->
-{% if current_user.is_authenticated %}
-<a href="/">Flask board</a> | 
-<a href="/account">{{ current_user.username }}</a> | 
-<a href="/post">post</a> | 
-<a href="/logout">logout</a> | 
-{% else %}
-<li><a href="/login">login</a></li>
-{% endif %}
+{% extends 'base.html' %}
+{% block body %}
 <table>
     <tr>
         <td>title</td>
-        <td>id</td>
+        <td>url</td>
+        <td>user</td>
     </tr>
     {% for post in posts %}
     <tr>
-        <td>{{ post.title }}</td>
-        <td>{{ post.author_id }}</td>
+        <td>{{ post.Post.title }}</td>
+        <td>{{ post.Post.url }}</td>
+        <td><a href="/user/{{ post.User.username }}"">{{ post.User.username }}</a></td>
     </tr>
     {% endfor %}
 </table>
+{% endblock %}

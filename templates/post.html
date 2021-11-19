@@ -1,4 +1,6 @@
+{% extends 'base.html' %}
 
+{% block body %}
 <form method="POST" action="/post">
     {{ form.csrf_token }}
     {{ form.author_id }}
@@ -8,9 +10,11 @@
             <td>{{ form.title }}</td>
         </tr>
         <tr>
-            <td>{{ form.content.label }}:</td>
-            <td>{{ form.content }}</td>
+            <td>{{ form.url.label }}:</td>
+            <td>{{ form.url }}</td>
         </tr>
     </table>
     <input type="submit" value="post">
 </form>
+
+{% endblock %}

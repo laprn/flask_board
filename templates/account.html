@@ -1,13 +1,27 @@
-<table>
-<tr>
-    <td>username</td>
-    <td>{{ current_user.username }}</td>
-</tr>
-<tr>
-    <td>email</td>
-    <td>{{ current_user.email }}</td>
-</tr>
-<tr>
-    <td>free text</td>
-    <td></td>
-</table>
+{% extends 'base.html' %}
+
+{% block body %}
+<form method="POST" action="/account">
+    {{ form.csrf_token }}
+    <table>
+        <tr>
+            <td>email:</td>
+            <td>{{ current_user.email }}</td>
+        </tr>
+        <tr>
+            <td>createdAt:</td>
+            <td>{{ current_user.created }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.username.label }}:</td>
+            <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.about.label }}:</td>
+            <td>{{ form.about }}</td>
+        </tr>
+    </table>
+    <input type="submit" value="update">
+</form>
+
+{% endblock %}

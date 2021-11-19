@@ -1,0 +1,20 @@
+<a href="/">url board</a> |
+{% if current_user.is_authenticated %}
+<a href="/account">{{ current_user.username }}</a> |
+<a href="/post">post</a> |
+<a href="/logout">logout</a> |
+{% else %}
+<a href="/login">login</a>
+{% endif %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for i in messages%}
+<p>{{ i }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+{% block body %}
+
+{% endblock %}
